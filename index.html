@@ -1,103 +1,103 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>French B1 Learning Hub</title>
-    <style>
-        :root {
-            --header-bg: #2c3e50;
-            --border-color: #dee2e6;
-            --accent-blue: #1a73e8;
-            --silent-red: #d93025;
-        }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 20px; background-color: #f4f7f6; }
-        .container { max-width: 1000px; margin: 0 auto; }
-        
-        header { text-align: center; padding: 40px 0; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        h1 { color: var(--header-bg); margin: 0; font-size: 2.2rem; }
-        p.subtitle { color: #666; margin-top: 10px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>French Cheatsheet</title>
 
-        /* GRID LAYOUT */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+<style>
+:root {
+    --primary: #2c3e50;
+    --accent: #1a73e8;
+    --bg: #f5f7fa;
+}
 
-        /* INTERACTIVE CARDS */
-        .card { 
-            background: white; border-radius: 8px; border: 1px solid var(--border-color); 
-            padding: 20px; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
-            display: flex; flex-direction: column; justify-content: space-between;
-        }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); border-color: var(--accent-blue); }
-        
-        .card h2 { color: var(--accent-blue); margin-top: 0; font-size: 1.25rem; }
-        .card p { font-size: 0.95rem; color: #555; }
-        
-        .badge { 
-            display: inline-block; padding: 4px 10px; border-radius: 20px; 
-            font-size: 0.75rem; font-weight: bold; margin-bottom: 10px;
-            background: #e8f0fe; color: var(--accent-blue);
-        }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: #333;
+}
 
-        .btn { 
-            text-decoration: none; text-align: center; padding: 10px; 
-            background: var(--header-bg); color: white; border-radius: 4px; 
-            margin-top: 15px; font-weight: bold;
-        }
-        .btn:hover { background: #34495e; }
+.container {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 20px;
+    text-align: center;
+}
 
-        .silent-hint { color: var(--silent-red); font-weight: bold; }
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
 
-        @media (max-width: 600px) { body { padding: 10px; } h1 { font-size: 1.8rem; } }
-    </style>
+.subtitle {
+    color: #666;
+    margin-bottom: 50px;
+}
+
+.grid {
+    display: grid;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.2s ease;
+    border: 1px solid #eee;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-color: var(--accent);
+}
+
+.card h2 {
+    margin: 0 0 10px 0;
+    color: var(--accent);
+}
+
+.card p {
+    margin: 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+footer {
+    margin-top: 60px;
+    font-size: 0.8rem;
+    color: #999;
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
-    <header>
-        <h1>B1 French Hub</h1>
-        <p class="subtitle">Interactive Tools for Mastering Conjugation & Expressions</p>
-    </header>
+    <h1>French Cheatsheet</h1>
+    <p class="subtitle">Simple tools to improve your grammar and vocabulary</p>
 
     <div class="grid">
-        <div class="card" onclick="location.href='verbs.html'">
-            <div>
-                <span class="badge">Grammar</span>
-                <h2>Verb Conjugator</h2>
-                <p>Master the top 15 verbs in Present and Passé Composé. Includes the "Boot Pattern" and <span class="silent-hint">Silent Letters</span>.</p>
-            </div>
-            <a href="verbs.html" class="btn">Open Table</a>
-        </div>
+        <a href="conjugation_cheat_sheet.html" class="card">
+            <h2>Verb Conjugation Guide</h2>
+            <p>Present & Passé Composé with patterns and pronunciation tips.</p>
+        </a>
 
-        <div class="card" onclick="location.href='expressions.html'">
-            <div>
-                <span class="badge">Vocabulary</span>
-                <h2>News & Media Expressions</h2>
-                <p>Formal and neutral expressions used in French news. Features audio and register variations.</p>
-            </div>
-            <a href="expressions.html" class="btn">Open Vocabulary</a>
-        </div>
-
-        <div class="card">
-            <div>
-                <span class="badge">Coming Soon</span>
-                <h2>Logical Connectors</h2>
-                <p>Learn to structure your B1 arguments using <i>cependant</i>, <i>par contre</i>, and <i>néanmoins</i>.</p>
-            </div>
-            <a href="#" class="btn" style="background: #ccc; cursor: not-allowed;">Locked</a>
-        </div>
-
-        <div class="card">
-            <div>
-                <span class="badge">Coming Soon</span>
-                <h2>Subjunctive Intro</h2>
-                <p>Interactive guide to expressing doubt, necessity, and emotions.</p>
-            </div>
-            <a href="#" class="btn" style="background: #ccc; cursor: not-allowed;">Locked</a>
-        </div>
+        <a href="vocabulary.html" class="card">
+            <h2>Expressions</h2>
+            <p>Vocabulary and useful expressions.</p>
+        </a>
     </div>
 
-    <footer style="text-align: center; margin-top: 50px; color: #888; font-size: 0.8rem;">
-        &copy; 2026 French Learning Hub - All tools feature interactive audio 🔊
+    <footer>
+        © 2026 French Cheatsheet
     </footer>
 </div>
 
