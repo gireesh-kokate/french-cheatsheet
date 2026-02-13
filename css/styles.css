@@ -1,13 +1,14 @@
 :root {
-  --primary: #1e3a8a;        /* deep blue for headings/links */
-  --accent: #3b82f6;         /* soft blue for buttons/hover */
-  --border: #d1d5db;         /* lighter gray for borders */
-  --text: #1f2937;           /* dark gray, less harsh than black */
-  --bg: #fefefe;             /* soft off-white background */
-  --card-bg: #f8fafc;        /* subtle card background */
-  --table-header-bg: #e5e7eb;/* soft gray header */
-  --table-hover-bg: #e0f2fe; /* light blue hover for table */
-  --footer-bg: #f9fafb;      /* soft footer bg */
+  --primary: #2563eb;        /* softer blue */
+  --accent: #3b82f6;
+  --border: #e5e7eb;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --bg: #f8fafc;             /* slightly softer background */
+  --card-bg: #ffffff;
+  --table-header-bg: #f1f5f9;
+  --table-hover-bg: #eef6ff;
+  --footer-bg: #f1f5f9;
 }
 
 * {
@@ -16,71 +17,99 @@
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 
+               "Segoe UI", Roboto, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
 }
 
+/* Layout */
+
 .container {
-  width: 90%;
-  max-width: 1100px;
+  width: 92%;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-/* Header */
+/* =========================
+   HEADER (Anki-style)
+========================= */
 
 .site-header {
+  background: #ffffff;
   border-bottom: 1px solid var(--border);
-  padding: 1.5rem 0;
-  background-color: var(--bg);
+  padding: 1.2rem 0;
 }
 
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .site-title {
   margin: 0;
-  font-size: 1.7rem;
-  color: var(--primary);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111827;
 }
 
 .site-subtitle {
-  margin: 0.3rem 0 0;
-  font-size: 0.95rem;
-  opacity: 0.8;
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
 }
+
+/* Minimal nav (no button boxes) */
 
 .nav-list {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   margin: 0;
   padding: 0;
 }
 
 .nav-link {
   text-decoration: none;
-  padding: 0.5rem 0.9rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  color: var(--primary);
-  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  position: relative;
+  transition: color 0.2s ease;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+  color: var(--text);
+}
+
 .nav-link.active {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent);
+  color: var(--text);
+  font-weight: 600;
 }
 
-/* Grid / Cards */
+/* Subtle underline animation */
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: var(--accent);
+  transition: width 0.2s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* =========================
+   CARDS
+========================= */
 
 .learning-focus {
   padding: 3rem 0;
@@ -100,73 +129,87 @@ body {
 .card {
   padding: 1.5rem;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--card-bg);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
 }
 
-/* Tables */
+/* =========================
+   TABLES (Study Friendly)
+========================= */
 
 table {
-  width: auto;                /* auto width based on content */
-  max-width: 90%;             /* don’t exceed container width */
-  margin: 1.5rem auto;        /* vertical spacing + center table */
+  width: auto;
+  max-width: 90%;
+  margin: 2rem auto;
   border-collapse: collapse;
-  
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.95rem;
 }
 
-th, td {
-  padding: 0.9rem 1rem;
-  text-align: left;
-  border: 1px solid var(--border);
-  transition: background-color 0.2s ease;
-}
-
-th {
+thead th {
   background: var(--table-header-bg);
   font-weight: 600;
-  background-color: #e5e7eb;
   color: var(--primary);
 }
 
+th, td {
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
 
 td:hover {
   background-color: var(--table-hover-bg);
 }
 
+/* =========================
+   SILENT LETTERS
+========================= */
 
-/* Footer */
+.silent {
+  color: #ef4444;  /* softer red */
+  font-size: 0.85em;
+  font-style: italic;
+  position: relative; /* needed for tooltip */
+  cursor: help;
+}
+
+/* Tooltip */
+
+.silent:hover::after {
+  content: "silent";
+  position: absolute;
+  top: -1.5em;
+  left: 0;
+  font-size: 0.65em;
+  background: #111827;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 .site-footer {
   margin-top: 3rem;
   padding: 1.5rem 0;
   border-top: 1px solid var(--border);
   text-align: center;
-  font-size: 0.85rem;
-  opacity: 0.8;
+  font-size: 0.8rem;
+  color: var(--muted);
   background-color: var(--footer-bg);
 }
-
-.silent {
-
-  /*background-color: #70724d;  very light blue */
-  color: #fc020f; /* dark text */
-  border-radius: 2px;
-}
-
-.silent:hover::after {
-  content: "silent";
-  font-size: 0.7em;
-  color: #6b7280;
-  position: absolute;
-  top: -1.2em;
-  left: 0;
-}
-
-
-
