@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialogues</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="common-header"></div> 
+
+<div class="page">
+ 
+    <div class="table-wrap">
+<table id="dialogTable">
+    <thead>
+        <tr>
+            <th>Speaker</th>
+            <th>Dialogue</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Marie</td>
+            <td>Bonjour Paul ! Comment vas-tu aujourd’hui ?</td>
+        </tr>
+        <tr>
+            <td>Paul</td>
+            <td>Je vais très bien, merci. Et toi ?</td>
+        </tr>
+        <tr>
+            <td>Marie</td>
+            <td>Ça va bien aussi. Qu’as-tu fait ce matin ?</td>
+        </tr>
+        <tr>
+            <td>Paul</td>
+            <td>Ce matin, j’ai pris mon petit-déjeuner, puis j’ai commencé à travailler. Et toi ?</td>
+        </tr>
+        <tr>
+            <td>Marie</td>
+            <td>Pareil ! D’ailleurs, qu’est-ce que tu aimes boire au petit-déjeuner ?</td>
+        </tr>
+        <tr>
+            <td>Paul</td>
+            <td>J’aime boire du café, mais parfois je prends du thé. Et toi ?</td>
+        </tr>
+        <tr>
+            <td>Marie</td>
+            <td>Moi aussi, je préfère le café. Après le travail, qu’est-ce que tu préfères faire pour te détendre ?</td>
+        </tr>
+        <tr>
+            <td>Paul</td>
+            <td>J’aime prendre l’air et regarder la télévision. Ce soir, je vais manger puis me reposer un peu.</td>
+        </tr>
+        <tr>
+            <td>Marie</td>
+            <td>Tu as raison, il faut se reposer. Hier, ma sœur avait de la fièvre.</td>
+        </tr>
+        <tr>
+            <td>Paul</td>
+            <td>Ah bon ? Qu’est-ce que tu fais habituellement quand quelqu’un de ta famille est malade ?</td>
+        </tr>
+        <tr>
+            <td>Marie</td>
+            <td>En général, on reste au chaud et on se repose à la maison. Et toi, qu’est-ce que tu fais pour te sentir mieux quand tu es fatigué ?</td>
+        </tr>
+        <tr>
+            <td>Paul</td>
+            <td>Je mange un bon repas et je dors un peu plus que d’habitude. Ça aide beaucoup !</td>
+        </tr>
+    </tbody>
+</table>
+
+    </div>
+</div>
+
+
+
+<script>
+    function speakText(text, lang) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = 0.9;
+        
+        const voices = window.speechSynthesis.getVoices();
+        const voice = voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+        if (voice) utterance.voice = voice;
+
+        window.speechSynthesis.speak(utterance);
+    }
+
+    document.querySelectorAll('td').forEach(cell => {
+        cell.addEventListener('click', () => {
+            const text = cell.innerText;
+            const colIndex = cell.cellIndex;
+            const lang = (colIndex === 1) ? 'en-US' : 'fr-FR';
+            speakText(text, lang);
+        });
+    });
+
+    window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
+</script>
+
+<div id="common-footer"></div>
+
+<script type="module" src="js/app.js"></script>
+
+</body>
+</html>
