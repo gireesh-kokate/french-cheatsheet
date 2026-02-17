@@ -213,3 +213,59 @@ td:hover {
   color: var(--muted);
   background-color: var(--footer-bg);
 }
+
+/* =========================
+   DROPDOWN MENU (Minimal)
+========================= */
+
+/* Required for positioning */
+.nav-list li {
+  position: relative;
+}
+
+/* Dropdown container */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 140%;
+  left: 0;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  z-index: 1000;
+}
+
+/* Dropdown items */
+.dropdown li {
+  padding: 0;
+}
+
+/* Dropdown links */
+.dropdown .nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Remove underline animation inside dropdown */
+.dropdown .nav-link::after {
+  display: none;
+}
+
+/* Hover styles */
+.dropdown .nav-link:hover {
+  background: var(--table-hover-bg);
+  color: var(--text);
+}
+
+/* Show dropdown on hover */
+.has-dropdown:hover > .dropdown {
+  display: block;
+}
+
