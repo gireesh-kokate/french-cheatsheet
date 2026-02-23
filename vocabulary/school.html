@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulaire et Structures - École</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="common-header"></div>
+
+<div class="page">
+
+    <div class="table-wrap">
+        <table>
+            <caption>I. École et Matériel</caption>
+            <thead>
+                <tr>
+                    <th>Français</th>
+                    <th>Anglais</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="text-left">un classeur</td><td>a binder / folder</td></tr>
+                <tr><td class="text-left">une activité d’apprentissage</td><td>a learning activity</td></tr>
+                <tr><td class="text-left">réalisé(e)</td><td>completed / carried out</td></tr>
+                <tr><td class="text-left">en classe</td><td>in class</td></tr>
+                <tr><td class="text-left">une fiche de travail</td><td>a worksheet</td></tr>
+                <tr><td class="text-left">le cahier de vie</td><td>class life notebook</td></tr>
+                <tr><td class="text-left">virtuel(le)</td><td>online / virtual</td></tr>
+                <tr><td class="text-left"><span class="highlight">se connecter</span></td><td>to log in</td></tr>
+                <tr><td class="text-left">le sac</td><td>school bag</td></tr>
+                <tr><td class="text-left">le cahier de chant</td><td>song notebook</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <caption>II. Vie de classe</caption>
+            <thead>
+                <tr>
+                    <th>Français</th>
+                    <th>Anglais</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="text-left">une recette</td><td>a recipe</td></tr>
+                <tr><td class="text-left">à l’occasion de</td><td>on the occasion of</td></tr>
+                <tr><td class="text-left">un anniversaire</td><td>a birthday</td></tr>
+                <tr><td class="text-left"><span class="highlight">refaire</span></td><td>to do again</td></tr>
+                <tr><td class="text-left">les vacances</td><td>holidays</td></tr>
+                <tr><td class="text-left">le retour</td><td>return</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <caption>III. Expressions et Structures</caption>
+            <thead>
+                <tr>
+                    <th>Français / Structure</th>
+                    <th>Usage / Traduction</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="2" class="group-divider">EXPRESSIONS UTILES</td></tr>
+                <tr><td class="text-left">Bien sûr</td><td>Of course</td></tr>
+                <tr><td class="text-left">Mais pas de panique</td><td>But don’t panic</td></tr>
+                <tr><td class="text-left">Bonne lecture !</td><td>Enjoy your reading!</td></tr>
+                <tr><td class="text-left">N’hésitez pas à...</td><td>Don’t hesitate to...</td></tr>
+                
+                <tr><td colspan="2" class="group-divider">STRUCTURES GRAMMATICALES</td></tr>
+                <tr><td class="text-left"><span class="highlight">vous trouverez</span></td><td>Futur simple</td></tr>
+                <tr><td class="text-left"><span class="highlight">je serais très content</span></td><td>Conditionnel (Politesse)</td></tr>
+                <tr><td class="text-left">dans ce classeur / en classe</td><td>Expression du lieu</td></tr>
+                <tr><td class="text-left">au départ / à notre retour</td><td>Expression du temps</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    (function(){
+        if (window.__mvc_loaded) return; 
+
+        function cleanTextForTTS(text){
+            if(!text) return '';
+            return text.split('–')[0] // Only read the French part if separated by dash
+                       .replace(/\(e\)\(s\)/g,'')
+                       .replace(/\(e\)/g,'')
+                       .replace(/\(s\)/g,'')
+                       .replace(/\//g,' ')
+                       .replace(/\s+/g,' ').trim();
+        }
+
+        function speak(text, lang){
+            if(!text) return;
+            try{
+                window.speechSynthesis.cancel();
+                const u = new SpeechSynthesisUtterance(text);
+                u.lang = lang || 'fr-FR';
+                u.rate = 0.85;
+                window.speechSynthesis.speak(u);
+            }catch(e){console.warn('TTS error',e)}
+        }
+
+        const cells = Array.from(document.querySelectorAll('td.text-left'));
+        cells.forEach(cell=>{
+            cell.style.cursor = 'pointer';
+            cell.addEventListener('click',()=>{
+                const text = cleanTextForTTS(cell.innerText);
+                speak(text,'fr-FR');
+            });
+        });
+
+        window.speechSynthesis.getVoices();
+    })();
+</script>
+
+<div id="common-footer"></div>
+<script type="module" src="js/app.js"></script>
+
+</body>
+</html>
