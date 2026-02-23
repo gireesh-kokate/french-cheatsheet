@@ -227,8 +227,9 @@ td:hover {
 .dropdown {
   display: none;
   position: absolute;
-  top: 140%;
+  top: 100%;
   left: 0;
+  padding-top: 10px;
   list-style: none;
   padding: 0.5rem 0;
   margin: 0;
@@ -268,4 +269,5 @@ td:hover {
 .has-dropdown:hover > .dropdown {
   display: block;
 }
+
 
