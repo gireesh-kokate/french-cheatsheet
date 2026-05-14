@@ -30,5 +30,5 @@ function setYear() {
   }
 }
 
-loadComponent("common-header", "includes/header.html");
-loadComponent("common-footer", "includes/footer.html");
+loadComponent("common-header", "../includes/header.html");
+loadComponent("common-footer", "../includes/footer.html");
