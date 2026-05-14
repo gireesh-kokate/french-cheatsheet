@@ -107,6 +107,12 @@ body {
   width: 100%;
 }
 
+/* Dropdown visibility */
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
+  display: block;
+}
+
 /* =========================
    CARDS
 ========================= */
@@ -212,6 +218,38 @@ td:hover {
   font-size: 0.8rem;
   color: var(--muted);
   background-color: var(--footer-bg);
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.highlight {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.aux-label {
+  font-style: italic;
+  color: var(--text);
+}
+
+.group-divider {
+  font-weight: 700;
+  text-align: left;
+  background: #f8fafc;
+  color: var(--text);
 }
 
 /* =========================

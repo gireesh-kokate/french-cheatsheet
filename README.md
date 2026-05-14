@@ -22,7 +22,11 @@ The goal is to provide a **fast, accessible reference** you can open anytime whi
 
 | File | Description |
 |------|-------------|
-| `index.html` | The main French cheatsheet page (open in any browser). |
+| `index.html` | The main French cheatsheet home page. |
+| `grammar/conjugation.html` | Essential verb conjugation reference. |
+| `vocabulary/expression.html` | Useful French expressions and vocabulary. |
+| `vocabulary/school.html` | School vocabulary and classroom structures. |
+| `practice/dialogues.html` | Sample dialogue practice with audio support. |
 | `README.md` | Documentation for the project. |
 
 ---
@@ -33,7 +37,8 @@ The goal is to provide a **fast, accessible reference** you can open anytime whi
    git clone https://github.com/gireesh-kokate/french-cheatsheet.git
    ```
 2. Open `index.html` in your browser.  
-3. Use it as a quick reference while studying or practicing French.
+3. If you want a more consistent experience, serve the folder with a local web server and then open `http://localhost/...`.
+4. Use it as a quick reference while studying or practicing French.
 
 ---
 
